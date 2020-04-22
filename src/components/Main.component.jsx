@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 
-import ItemList from "./ItemList.component"
+import ItemList from './ItemList.component'
+import items from '../Datas/ListItem.datas'
 
 export default class Main extends Component {
-    render() {
-        return (
-            <div>
-                <ItemList />
-            </div>
-        )
-    }
+  static defaultProps = {
+    items,
+  }
+  render() {
+    return (
+      <div className="container-fluid">
+        <ItemList items={this.props.items} />
+      </div>
+    )
+  }
 }
