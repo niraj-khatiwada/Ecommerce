@@ -6,8 +6,7 @@ import { Nav, Link } from '../styles/Nav.styles'
 
 function Navbar({ history, location }) {
   const style = { cursor: 'pointer' }
-  console.log(location)
-  return (
+      return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top ">
       <NavLink className="navbar-brand" to="/">
         Shop'em
