@@ -28,6 +28,14 @@ function SignUpForm({ handleChange, handleSubmit, value }) {
         />
         <FormInput
           handleChange={handleChange}
+          name="displayName"
+          type="text"
+          placeholder="Enter a username"
+          label="Set a username"
+          value={value}
+        />
+        <FormInput
+          handleChange={handleChange}
           name="password1"
           type="password"
           placeholder="Enter Password"

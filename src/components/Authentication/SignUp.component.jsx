@@ -3,11 +3,14 @@ import SignUpForm from './SignUpForm.component.jsx'
 
 import { withRouter } from 'react-router-dom'
 
+import {auth,createUserProfileDocument } from "../../firebase/firebase.utils"
+
 class SignUp extends Component {
   constructor() {
     super()
     this.state = {
       email: '',
+      displayName:"",
       password1: '',
       password2:""
     }
@@ -18,10 +21,18 @@ class SignUp extends Component {
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value })
   }
-  handleSubmit(evt) {
+  async handleSubmit(evt) {
     evt.preventDefault()
+    const {email,displayName, password1, password2} = this.state
+    if (password1 !== password2) {return alert("Password don'match")}
+    await auth.createUserWithEmailAndPassword(email, password1)
+    .then(async res => {
+      await createUserProfileDocument(res, displayName)
+      .then (() => this.setState({ email: '',displayName:"", password1: '', password2:"" }))
+    })
+    .catch(err => console.log("Error while creating Account", err))
+
     console.log(this.state)
-    this.setState({ email: '', password1: '', password2:"" })
   }
   render() {
     return (
