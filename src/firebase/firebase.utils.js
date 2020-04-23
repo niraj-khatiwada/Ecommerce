@@ -27,6 +27,7 @@ export const createUserProfileDocument = async (userAuth, additionalDatas) => {
       console.log('Something went wrong', error)
     }
   }
+  return userRef
 }
 
 firebase.initializeApp(config)

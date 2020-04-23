@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import SignInForm from './SignInForm.component.jsx'
+import SignUpForm from './SignUpForm.component.jsx'
 
 import { withRouter } from 'react-router-dom'
 
-class SignIn extends Component {
+class SignUp extends Component {
   constructor() {
     super()
     this.state = {
       email: '',
-      password: '',
+      password1: '',
+      password2:""
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -19,11 +20,12 @@ class SignIn extends Component {
   }
   handleSubmit(evt) {
     evt.preventDefault()
-    this.setState({ email: '', password: '' })
+    console.log(this.state)
+    this.setState({ email: '', password1: '', password2:"" })
   }
   render() {
     return (
-      <SignInForm
+      <SignUpForm
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         value={this.state}
@@ -32,4 +34,4 @@ class SignIn extends Component {
   }
 }
 
-export default withRouter(SignIn)
+export default withRouter(SignUp)
