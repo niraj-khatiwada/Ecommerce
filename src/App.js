@@ -10,29 +10,50 @@ import ShopItemDatas from './Datas/ShopItem.datas'
 import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar.component'
 
-function App() {
-  return (
-    <div className="App container-fluid mt-4">
-      <Navbar />
-      <Switch>
-        <Route exact path="/" render={Main} />
-        <Route
-          exact
-          path="/shop"
-          render={() => <Shop itemsArray={ShopItemDatas} />}
-        />
-        <Route exact path="/signin" render={SignIn} />
-        <Route exact path="/:item" render={Item} />
-        <Route
-          render={() => (
-            <h1 className="alert alert-danger text-center ">
-              404 Page Not Found
-            </h1>
-          )}
-        />
-      </Switch>
-    </div>
-  )
+import { auth } from './firebase/firebase.utils'
+
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      loggedInUser: null,
+    }
+  }
+
+  unsubscribeFromAuth = null
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+      console.log(user)
+      this.setState({ loggedInUser: user })
+    })
+  }
+  componentWillUnmount() {
+    this.unsubscribeFromAuth()
+  }
+
+  render() {
+    return (
+      <div className="App container-fluid mt-4">
+        <Navbar loggedInUser={this.state.loggedInUser} />
+        <Switch>
+          <Route exact path="/" render={Main} />
+          <Route
+            exact
+            path="/shop"
+            render={() => <Shop itemsArray={ShopItemDatas} />}
+          />
+          <Route exact path="/signin" render={SignIn} />
+          <Route
+            render={() => (
+              <h1 className="alert alert-danger text-center ">
+                404 Page Not Found
+              </h1>
+            )}
+          />
+        </Switch>
+      </div>
+    )
+  }
 }
 
 export default App

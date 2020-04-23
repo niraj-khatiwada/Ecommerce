@@ -16,7 +16,7 @@ class ItemList extends React.Component {
       return (
         <Box
           className={`d-flex flex-column ${height[1]} ${height[0]}  p-0`}
-          style={{ height: height[0] }}
+          style={{ height: height[0] }} key={item.id}
         >
           <ImageWrapper
             style={{

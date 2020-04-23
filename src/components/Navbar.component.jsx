@@ -2,12 +2,12 @@ import React from 'react'
 
 import { NavLink, withRouter } from 'react-router-dom'
 
-import { Nav, Link } from '../styles/Nav.styles'
+import { auth } from './../firebase/firebase.utils'
 
-function Navbar({ history, location }) {
+function Navbar({ history, loggedInUser }) {
   const style = { cursor: 'pointer' }
-      return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top ">
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top ">
       <NavLink className="navbar-brand" to="/">
         Shop'em
       </NavLink>
@@ -35,12 +35,14 @@ function Navbar({ history, location }) {
           </h5>
           <h5
             onClick={() => {
-              return history.push('/signin')
+              {
+                loggedInUser === null ? history.push('/signin') : auth.signOut()
+              }
             }}
             className={`nav-item nav-link`}
             style={style}
           >
-            SignIn
+            {loggedInUser === null ? 'Sign In' : 'Sign Out'}
           </h5>
           <h5 className="nav-item nav-link" style={style}>
             Contact

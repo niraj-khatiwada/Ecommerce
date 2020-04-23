@@ -19,13 +19,13 @@ class SignIn extends Component {
         this.setState({[evt.target.name]:evt.target.value })
     }
     handleSubmit(evt){
-        console.log(evt)
         evt.preventDefault()
         this.setState({email:"", password:""})
     }
     render() {
         return (
             <SignInForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} value={this.state}/>
+
         )
     }
 }
