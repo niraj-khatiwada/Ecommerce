@@ -13,6 +13,22 @@ const config = {
   measurementId: 'G-8RBY162V8P',
 }
 
+export const createUserProfileDocument = async (userAuth, additionalDatas) => {
+  if (!userAuth) return
+  const userRef = firestore.doc(`users/${userAuth.uid}`)
+  const snapshot = await userRef.get()
+  if (!snapshot.exists) {
+    const { displayName, email } = userAuth
+    const createdDate = new Date()
+
+    try {
+      await userRef.set({ displayName, email, createdDate, ...additionalDatas })
+    } catch (error) {
+      console.log('Something went wrong', error)
+    }
+  }
+}
+
 firebase.initializeApp(config)
 
 export const auth = firebase.auth()

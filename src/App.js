@@ -11,6 +11,7 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar.component'
 
 import { auth } from './firebase/firebase.utils'
+import { createUserProfileDocument } from './firebase/firebase.utils'
 
 class App extends React.Component {
   constructor() {
@@ -22,9 +23,9 @@ class App extends React.Component {
 
   unsubscribeFromAuth = null
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
       console.log(user)
-      this.setState({ loggedInUser: user })
+      createUserProfileDocument(user)
     })
   }
   componentWillUnmount() {
