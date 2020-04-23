@@ -4,6 +4,7 @@ import './App.css'
 import Main from './components/Main.component'
 import Item from './components/Item.component'
 import Shop from './components/Shop.component'
+import SignIn from './components/Authentication/SignIn.component'
 
 import ShopItemDatas from './Datas/ShopItem.datas'
 import { Route, Switch } from 'react-router-dom'
@@ -20,6 +21,7 @@ function App() {
           path="/shop"
           render={() => <Shop itemsArray={ShopItemDatas} />}
         />
+        <Route exact path="/signin" render={SignIn} />
         <Route exact path="/:item" render={Item} />
         <Route
           render={() => (

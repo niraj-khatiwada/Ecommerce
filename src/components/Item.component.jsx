@@ -10,7 +10,7 @@ class Item extends Component {
         return (
             <div>
                 <Box>
-                     <h3>{match.params.item}</h3>
+                    <h3>{match.params.item}</h3>
                     <h5>Shop Now</h5>
                 </Box>
             </div>

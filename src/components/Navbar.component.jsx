@@ -34,6 +34,15 @@ function Navbar({ history, location }) {
           >
             Shop
           </h5>
+          <h5
+            onClick={() => {
+              return history.push('/signin')
+            }}
+            className={`nav-item nav-link`}
+            style={style}
+          >
+            SignIn
+          </h5>
           <h5 className="nav-item nav-link" style={style}>
             Contact
           </h5>
