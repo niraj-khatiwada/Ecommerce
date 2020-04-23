@@ -17,6 +17,7 @@ export const BoxText = styled.div`
   background-color: white;
   padding: 0.5rem;
   opacity: 0.8;
+  cursor: pointer;
 `
 export const ImageWrapper = styled.div`
   height: 100%;

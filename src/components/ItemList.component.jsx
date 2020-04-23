@@ -1,16 +1,17 @@
 import React from 'react'
 
+import { withRouter } from 'react-router-dom'
 import { ItemListContainer } from '../styles/ItemList.styles'
 
 import { Box, Row, BoxText, ImageWrapper } from '../styles/ItemList.styles'
 
-export default class ItemList extends React.Component {
+class ItemList extends React.Component {
   render() {
-    console.log(this.props.items)
+    const { history } = this.props
     let height
     const itemArray = this.props.items.map((item, index) => {
       index === 3 || index === 4
-        ? (height = [item.size, 'col-md'])
+        ? (height = ['60%', 'col-md'])
         : (height = ['h-50', 'col-md-4'])
       return (
         <Box
@@ -22,7 +23,7 @@ export default class ItemList extends React.Component {
               background: `url(${item.imageUrl}) center/cover no-repeat`,
             }}
           >
-            <BoxText>
+            <BoxText onClick={() => history.push(`${item.title}`)}>
               <h3>{item.title.toUpperCase()}</h3>
               <h5>Shop Now</h5>
             </BoxText>
@@ -32,9 +33,10 @@ export default class ItemList extends React.Component {
     })
     return (
       <ItemListContainer>
-        {console.log(itemArray)}
         <Row className="row">{itemArray}</Row>
       </ItemListContainer>
     )
   }
 }
+
+export default withRouter(ItemList)

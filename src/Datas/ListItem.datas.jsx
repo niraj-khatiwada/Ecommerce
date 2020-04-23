@@ -17,15 +17,11 @@ export default [
     {
       title: 'womens',
       imageUrl: 'https://images.unsplash.com/photo-1502323777036-f29e3972d82f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-      size: 'large',
       id: 4,
-      size:"60%"
     },
     {
       title: 'mens',
       imageUrl: 'https://images.unsplash.com/photo-1505022610485-0249ba5b3675?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-      size: 'large',
       id: 5,
-      size:"60%"
     }
   ]
