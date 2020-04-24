@@ -1,9 +1,11 @@
+import { noDuplicate } from './cart.utils'
+
 const INITIAL_CART_ITEMS = []
 
 const CartItemsReducer = (state = INITIAL_CART_ITEMS, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      return [...state, action.payload]
+      return noDuplicate(state, action.payload)
     default:
       return state
   }

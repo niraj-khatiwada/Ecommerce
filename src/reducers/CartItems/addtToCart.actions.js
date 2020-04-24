@@ -1,4 +1,4 @@
-const addToCart = (id, item, plusminus) => ({
+const addToCart = (id, item, count = 0, plusminus) => ({
   type: 'ADD_TO_CART',
   payload: {
     id,

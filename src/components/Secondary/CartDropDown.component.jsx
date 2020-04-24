@@ -18,9 +18,10 @@ const CartDropdown = (props) => {
             <DropdownItem>
                 <div className="d-flex">
                 <img src={item.item.imageUrl} style={{width:"4rem"}} />
-                <div className="d-flex flex-column ml-4 pr-1" style={{overflow:"hidden", }}>
+                <div className="d-flex flex-column ml-3 pr-1" style={{overflow:"hidden", }}>
                     <span >{item.item.name}</span>
-                    <small>$ {item.item.price}</small>
+                    <span>$ {item.item.price}</span>
+                    <span>x {item.quantity}</span>
                 </div>
                 </div>
             </DropdownItem>
