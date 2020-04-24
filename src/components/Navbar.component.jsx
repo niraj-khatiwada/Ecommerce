@@ -6,13 +6,31 @@ import { auth } from './../firebase/firebase.utils'
 
 import Popover from './Secondary/Popover.component'
 
+import { connect } from 'react-redux'
+
 class Navbar extends React.Component {
   state = {
     signoutconfirm: false,
   }
+  toggle = () =>
+    this.setState((preState) => this.setState({ signoutconfirm: !preState }))
+  closePopover = () => this.setState({ signoutconfirm: false })
   render() {
-    const { history, loggedInUser } = this.props
+    const { history, user } = this.props
+    const { loggedInUser } = user
     const style = { cursor: 'pointer' }
+
+    const popover = (
+      <Popover
+        id="signoutconfirm"
+        signoutconfirm={this.state.signoutconfirm}
+        toggle={this.toggle}
+        signout={() => {
+          auth.signOut()
+          this.closePopover()
+        }}
+      />
+    )
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top ">
         <NavLink className="navbar-brand" to="/">
@@ -52,20 +70,7 @@ class Navbar extends React.Component {
             >
               {loggedInUser === null ? 'Sign In' : 'Sign Out'}
             </h5>
-            <Popover
-              id="signoutconfirm"
-              signoutconfirm={this.state.signoutconfirm}
-              toggle={() =>
-                this.setState((preState) =>
-                  this.setState({ signoutconfirm: !preState })
-                )
-              }
-              signout={() => {
-                auth.signOut()
-                this.setState({ signoutconfirm: false })
-              }}
-            />
-
+            {popover}
             <h5 className="nav-item nav-link" style={style}>
               Contact
             </h5>
@@ -78,4 +83,7 @@ class Navbar extends React.Component {
     )
   }
 }
-export default withRouter(Navbar)
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps)(withRouter(Navbar))

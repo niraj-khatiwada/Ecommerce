@@ -10,35 +10,32 @@ import ShopItemDatas from './Datas/ShopItem.datas'
 import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar.component'
 
+import { connect } from 'react-redux'
+
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      loggedInUser: null,
-    }
+  constructor(props) {
+    super(props)
   }
-
   unsubscribeFromAuth = null
   componentDidMount() {
+    const { dispatch } = this.props
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth)
 
         userRef.onSnapshot((snapshot) => {
-          this.setState(
-            {
-              loggedInUser: {
-                id: snapshot.id,
-                ...snapshot.data(),
-              },
+          dispatch({
+            type: 'SET_LOGGED_IN_USER',
+            payload: {
+              id: snapshot.id,
+              ...snapshot.data(),
             },
-            () => console.log(this.state)
-          )
+          })
         })
       } else {
-        return this.setState({ loggedInUser: userAuth })
+        return dispatch({ type: 'SET_LOGGED_IN_USER', payload: userAuth })
       }
     })
   }
@@ -49,7 +46,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App container-fluid mt-4">
-        <Navbar loggedInUser={this.state.loggedInUser} />
+        <Navbar />
         <Switch>
           <Route exact path="/" render={Main} />
 
@@ -74,4 +71,6 @@ class App extends React.Component {
   }
 }
 
-export default App
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps)(App)

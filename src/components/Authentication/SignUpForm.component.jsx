@@ -8,7 +8,7 @@ import { signInWithGoogle } from '../../firebase/firebase.utils'
 function SignUpForm({ handleChange, handleSubmit, value }) {
   return (
     <div className=" row flex-column justify-content-center align-items-center">
-      <h1 className="m-5">Register</h1>
+      <h1 className="m-5">Sign Up</h1>
       <button className="btn btn-primary" onClick={signInWithGoogle}>
         Sign Up with Google <i className="fab fa-google"></i>
       </button>
