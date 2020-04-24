@@ -55,6 +55,14 @@ class Navbar extends React.Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ml-auto">
+            <CartDropdown
+              dropdownToggle={
+                <Link className="nav-item nav-link d-flex p-0 align-items-center">
+                  <FIcon src="https://img.icons8.com/ios/24/000000/shopping-bag.png" />
+                  <SMALL>{totalQuantity}</SMALL>
+                </Link>
+              }
+            />
             <Link
               onClick={() => {
                 return history.push('/shop')
@@ -80,14 +88,6 @@ class Navbar extends React.Component {
             <Link className="nav-item nav-link" style={style}>
               Contact
             </Link>
-            <CartDropdown
-              dropdownToggle={
-                <Link className="nav-item nav-link d-flex p-0 align-items-center">
-                  <FIcon src="https://img.icons8.com/ios/24/000000/shopping-bag.png" />
-                  <SMALL>{totalQuantity}</SMALL>
-                </Link>
-              }
-            />
           </div>
         </div>
       </nav>
