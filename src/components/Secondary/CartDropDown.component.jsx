@@ -3,6 +3,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 
 import {DropdownDiv} from "../../styles/DropdownDiv.styles"
 
+
 const CartDropdown = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -10,14 +11,13 @@ const CartDropdown = (props) => {
 
   return (
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle caret>
-            Dropdown
+        <DropdownToggle className="bg-white border-0 btn-outline-light">
+        {props.dropdownToggle}
         </DropdownToggle>
         <DropdownDiv>
         <DropdownMenu>
             <DropdownItem header>Header</DropdownItem>
             <DropdownItem>Some Action ajsbhjasbhsbahjbh</DropdownItem>
-            <DropdownItem disabled>Action (disabled)</DropdownItem>
             <DropdownItem divider />
             <DropdownItem>Foo Action</DropdownItem>
             <DropdownItem>Bar Action</DropdownItem>

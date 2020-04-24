@@ -77,14 +77,14 @@ class Navbar extends React.Component {
             <Link className="nav-item nav-link" style={style}>
               Contact
             </Link>
-            <CartDropdown open={true} />
-            <Link
-              className="nav-item nav-link d-flex p-0 align-items-center"
-              style={style}
-            >
-              <FIcon src="https://img.icons8.com/ios/24/000000/shopping-bag.png" />
-              <SMALL>50</SMALL>
-            </Link>
+            <CartDropdown
+              dropdownToggle={
+                <Link className="nav-item nav-link d-flex p-0 align-items-center">
+                  <FIcon src="https://img.icons8.com/ios/24/000000/shopping-bag.png" />
+                  <SMALL>50</SMALL>
+                </Link>
+              }
+            />
           </div>
         </div>
       </nav>
