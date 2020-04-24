@@ -5,6 +5,7 @@ import Main from './components/Main.component'
 import Shop from './components/Shop.component'
 import SignIn from './components/Authentication/SignIn.component'
 import SignUp from './components/Authentication/SignUp.component'
+import Checkout from './components/Checkout.component'
 
 import ShopItemDatas from './Datas/ShopItem.datas'
 import { Route, Switch, Redirect } from 'react-router-dom'
@@ -63,7 +64,7 @@ class App extends React.Component {
             path="/shop"
             render={() => <Shop itemsArray={ShopItemDatas} />}
           />
-
+          <Route exact path="/checkout" component={Checkout} />
           <Route
             render={() => (
               <h1 className="alert alert-danger text-center ">

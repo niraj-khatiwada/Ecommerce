@@ -22,7 +22,10 @@ class Navbar extends React.Component {
     const { history, user, cart, toggle, dispatch } = this.props
     const { loggedInUser } = user
     const style = { cursor: 'pointer' }
-
+    const totalQuantity = cart.reduce(
+      (preVal, currVal) => preVal + currVal.quantity,
+      0
+    )
     const popover = (
       <Popover
         id="signoutconfirm"
@@ -81,7 +84,7 @@ class Navbar extends React.Component {
               dropdownToggle={
                 <Link className="nav-item nav-link d-flex p-0 align-items-center">
                   <FIcon src="https://img.icons8.com/ios/24/000000/shopping-bag.png" />
-                  <SMALL>{cart.length}</SMALL>
+                  <SMALL>{totalQuantity}</SMALL>
                 </Link>
               }
             />
