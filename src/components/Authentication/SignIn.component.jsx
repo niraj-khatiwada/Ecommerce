@@ -3,6 +3,8 @@ import SignInForm from './SignInForm.component.jsx'
 
 import { withRouter } from 'react-router-dom'
 
+import {auth} from "../../firebase/firebase.utils"
+
 class SignIn extends Component {
   constructor() {
     super()
@@ -17,9 +19,12 @@ class SignIn extends Component {
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value })
   }
-  handleSubmit(evt) {
+  async handleSubmit(evt) {
     evt.preventDefault()
-    this.setState({ email: '', password: '' })
+    const {email,password} = this.state
+    await auth.signInWithEmailAndPassword(email,password)
+    .then(() => (this.setState({ email: '', password: '' })))
+    .catch(err => console.log("Error while signing in"))
   }
   render() {
     return (

@@ -25,21 +25,21 @@ class SignUp extends Component {
     evt.preventDefault()
     const {email,displayName, password1, password2} = this.state
     if (password1 !== password2) {return alert("Password don'match")}
-    await auth.createUserWithEmailAndPassword(email, password1)
-    .then(async res => {
-      await createUserProfileDocument(res, displayName)
+    try{
+      const {user} = await auth.createUserWithEmailAndPassword(email, password1)
+      await createUserProfileDocument(user, {displayName})
       .then (() => this.setState({ email: '',displayName:"", password1: '', password2:"" }))
-    })
-    .catch(err => console.log("Error while creating Account", err))
-
-    console.log(this.state)
+      .catch(err => console.log("Error while creating Account", err))
+    } catch(err){
+     console.log("Error while creating Account", err)
+    }
   }
   render() {
     return (
       <SignUpForm
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
-        value={this.state}
+        value={this.state}  
       />
     )
   }

@@ -2,7 +2,6 @@ import React from 'react'
 import './App.css'
 
 import Main from './components/Main.component'
-import Item from './components/Item.component'
 import Shop from './components/Shop.component'
 import SignIn from './components/Authentication/SignIn.component'
 import SignUp from './components/Authentication/SignUp.component'
@@ -11,8 +10,7 @@ import ShopItemDatas from './Datas/ShopItem.datas'
 import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar.component'
 
-import { auth } from './firebase/firebase.utils'
-import { createUserProfileDocument } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 class App extends React.Component {
   constructor() {
