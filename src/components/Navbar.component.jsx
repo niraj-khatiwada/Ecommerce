@@ -1,12 +1,15 @@
 import React from 'react'
 
+import Popover from './Secondary/Popover.component'
+import { Link, FIcon, SMALL } from '../styles/Nav.styles'
+
 import { NavLink, withRouter } from 'react-router-dom'
 
 import { auth } from './../firebase/firebase.utils'
 
-import Popover from './Secondary/Popover.component'
-
 import { connect } from 'react-redux'
+
+import CartDropdown from './Secondary/CartDropDown.component'
 
 class Navbar extends React.Component {
   state = {
@@ -49,7 +52,7 @@ class Navbar extends React.Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ml-auto">
-            <h5
+            <Link
               onClick={() => {
                 return history.push('/shop')
               }}
@@ -57,8 +60,8 @@ class Navbar extends React.Component {
               style={style}
             >
               Shop
-            </h5>
-            <h5
+            </Link>
+            <Link
               id="signoutconfirm"
               onClick={() =>
                 loggedInUser === null
@@ -69,14 +72,19 @@ class Navbar extends React.Component {
               style={style}
             >
               {loggedInUser === null ? 'Sign In' : 'Sign Out'}
-            </h5>
+            </Link>
             {popover}
-            <h5 className="nav-item nav-link" style={style}>
+            <Link className="nav-item nav-link" style={style}>
               Contact
-            </h5>
-            <h5 className="nav-item nav-link" style={style}>
-              <i className="fas fa-shopping-bag"></i>
-            </h5>
+            </Link>
+            <CartDropdown open={true} />
+            <Link
+              className="nav-item nav-link d-flex p-0 align-items-center"
+              style={style}
+            >
+              <FIcon src="https://img.icons8.com/ios/24/000000/shopping-bag.png" />
+              <SMALL>50</SMALL>
+            </Link>
           </div>
         </div>
       </nav>

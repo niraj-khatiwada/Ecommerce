@@ -7,7 +7,7 @@ import SignIn from './components/Authentication/SignIn.component'
 import SignUp from './components/Authentication/SignUp.component'
 
 import ShopItemDatas from './Datas/ShopItem.datas'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Navbar from './components/Navbar.component'
 
 import { connect } from 'react-redux'
@@ -44,13 +44,19 @@ class App extends React.Component {
   }
 
   render() {
+    const { user } = this.props
     return (
       <div className="App container-fluid mt-4">
         <Navbar />
         <Switch>
           <Route exact path="/" render={Main} />
-
-          <Route exact path="/signin" render={() => <SignIn />} />
+          <Route
+            exact
+            path="/signin"
+            render={() =>
+              user.loggedInUser ? <Redirect to="/" /> : <SignIn />
+            }
+          />
           <Route exact path="/signup" render={() => <SignUp />} />
           <Route
             exact

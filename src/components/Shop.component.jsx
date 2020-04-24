@@ -11,14 +11,14 @@ class Shop extends Component {
 
     const shopItemArray = itemsArray.map((collectionItem) => {
       return (
-        <>
+        <React.Fragment key={collectionItem.title}>
           <h3 className="text-center mt-4">{collectionItem.title}</h3>
           <Row className="row col m-0 p-0">
             {collectionItem.items.map((item, index) =>
               index <= 3 ? <Item item={item} key={item.id} /> : null
             )}
           </Row>
-        </>
+        </React.Fragment>
       )
     })
     return (
