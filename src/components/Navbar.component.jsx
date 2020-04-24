@@ -19,7 +19,7 @@ class Navbar extends React.Component {
     this.setState((preState) => this.setState({ signoutconfirm: !preState }))
   closePopover = () => this.setState({ signoutconfirm: false })
   render() {
-    const { history, user } = this.props
+    const { history, user, cart, toggle, dispatch } = this.props
     const { loggedInUser } = user
     const style = { cursor: 'pointer' }
 
@@ -81,7 +81,7 @@ class Navbar extends React.Component {
               dropdownToggle={
                 <Link className="nav-item nav-link d-flex p-0 align-items-center">
                   <FIcon src="https://img.icons8.com/ios/24/000000/shopping-bag.png" />
-                  <SMALL>50</SMALL>
+                  <SMALL>{cart.length}</SMALL>
                 </Link>
               }
             />

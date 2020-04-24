@@ -4,13 +4,15 @@ import {ItemDiv, AddToCart} from "../styles/Item.styles"
 
 import { withRouter } from 'react-router-dom'
 
+import {connect} from "react-redux"
+
 class Item extends Component {
     render() {
-        const {match, item} = this.props
+        const { item, cart, dispatch} = this.props
         return (
             <div className="col-md-3 m-0 p-0">
                 <ItemDiv className=" d-flex text-center align-items-end" style={{background: `url(${item.imageUrl})center/cover no-repeat`}}>  
-                <AddToCart >
+                <AddToCart onClick={() => dispatch({type:"ADD_TO_CART", payload:{id:item.id, item:item, plusminus:1}})}>
                     <h5>Add to cart</h5>
                 </AddToCart>    
                 </ItemDiv>
@@ -23,4 +25,6 @@ class Item extends Component {
     }
 }
 
-export default withRouter(Item)
+const mapStateToProps = state => (state)
+
+export default connect(mapStateToProps)(withRouter(Item))

@@ -6,12 +6,18 @@ export const AddToCart = styled.div`
     opacity:0.7;
     padding:0.5rem;
     display:none;
+    cursor:pointer;
     transition:all 100ms ease-in-out;
     &:hover{
         background:black;
         color:white;
         opacity:1
     }
+    -webkit-user-select: none; 
+      -webkit-touch-callout: none; 
+      -moz-user-select: none; 
+      -ms-user-select: none; 
+      user-select: none;    
     
     `
     

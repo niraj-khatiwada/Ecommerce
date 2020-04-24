@@ -14,5 +14,5 @@ export const SMALL = styled.small`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -15%);
+    transform: translate(-60%, -20%);
 `
