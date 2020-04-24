@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import SignInForm from './SignInForm.component.jsx'
 
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
-import {auth} from "../../firebase/firebase.utils"
+import { auth } from '../../firebase/firebase.utils'
 
 class SignIn extends Component {
   constructor() {
@@ -21,18 +21,24 @@ class SignIn extends Component {
   }
   async handleSubmit(evt) {
     evt.preventDefault()
-    const {email,password} = this.state
-    await auth.signInWithEmailAndPassword(email,password)
-    .then(() => (this.setState({ email: '', password: '' })))
-    .catch(err => console.log("Error while signing in"))
+    const { email, password } = this.state
+    await auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.setState({ email: '', password: '' }))
+      .catch((err) => console.log('Error while signing in'))
   }
   render() {
     return (
-      <SignInForm
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        value={this.state}
-      />
+      <>
+        <SignInForm
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          value={this.state}
+        />
+        <Link exact to="/signup" className="d-flex justify-content-center mt-4 ">
+          Don't have an account yet? Sign up
+        </Link>
+      </>
     )
   }
 }
