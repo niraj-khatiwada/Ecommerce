@@ -58,7 +58,13 @@ class App extends React.Component {
               user.loggedInUser ? <Redirect to="/" /> : <SignIn />
             }
           />
-          <Route exact path="/signup" render={() => <SignUp />} />
+          <Route
+            exact
+            path="/signup"
+            render={() =>
+              user.loggedInUser ? <Redirect to="/" /> : <SignUp />
+            }
+          />
           <Route
             exact
             path="/shop"

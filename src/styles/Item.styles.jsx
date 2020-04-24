@@ -13,11 +13,6 @@ export const AddToCart = styled.div`
         color:white;
         opacity:1
     }
-    -webkit-user-select: none; 
-      -webkit-touch-callout: none; 
-      -moz-user-select: none; 
-      -ms-user-select: none; 
-      user-select: none;    
     
     `
     
