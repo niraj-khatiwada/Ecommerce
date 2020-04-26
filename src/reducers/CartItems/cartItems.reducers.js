@@ -1,4 +1,9 @@
-import { noDuplicate, filteredArray } from './cart.utils'
+import {
+  noDuplicate,
+  filteredArray,
+  addQuantity,
+  subtractQuantity,
+} from './cart.utils'
 
 const INITIAL_CART_ITEMS = []
 
@@ -8,6 +13,10 @@ const CartItemsReducer = (state = INITIAL_CART_ITEMS, action) => {
       return noDuplicate(state, action.payload)
     case 'REMOVE_FROM_CART':
       return filteredArray(state, action.payload)
+    case 'ADD_QUANTITY':
+      return addQuantity(state, action.payload)
+    case 'SUBTRACT_QUANTITY':
+      return subtractQuantity(state, action.payload)
     default:
       return state
   }

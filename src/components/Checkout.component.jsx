@@ -3,13 +3,17 @@ import React, { Component } from 'react'
 import { createStructuredSelector } from 'reselect'
 import { selectCartArray } from '../reducers/CartItems/cart.selectors'
 import { connect } from 'react-redux'
-import { removeFromCart } from '../reducers/CartItems/addtToCart.actions'
+import {
+  removeFromCart,
+  addQuantity,
+  subtractQuantity,
+} from '../reducers/CartItems/addtToCart.actions'
 
 import { ProductImage, TableData } from '../styles/Checkout.styles'
 
 class Checkout extends Component {
   render() {
-    const { sortedArray, remove } = this.props
+    const { sortedArray, remove, add, subtract } = this.props
     const middleAlign = { verticalAlign: 'middle' }
     const total = sortedArray.reduce(
       (accumulator, currvalue) =>
@@ -52,9 +56,16 @@ class Checkout extends Component {
                 </TableData>
                 <TableData style={middleAlign}>
                   <div className="w-100 d-flex justify-content-around">
-                    <button className="btn btn-dark ">-</button>
+                    <button
+                      className="btn btn-dark "
+                      onClick={() => subtract(item)}
+                    >
+                      -
+                    </button>
                     <h5>{item.quantity}</h5>
-                    <button className="btn btn-dark ">+</button>
+                    <button className="btn btn-dark " onClick={() => add(item)}>
+                      +
+                    </button>
                   </div>
                 </TableData>
                 <TableData style={middleAlign}>
@@ -66,7 +77,7 @@ class Checkout extends Component {
                     onClick={() => remove(item)}
                   >
                     Remove
-                  </button>{' '}
+                  </button>
                 </TableData>
               </tr>
             ))}
@@ -84,6 +95,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDipatchToProps = (dispatch) => ({
   remove: (item) => dispatch(removeFromCart(item)),
+  add: (item) => dispatch(addQuantity(item)),
+  subtract: (item) => dispatch(subtractQuantity(item)),
 })
 
 export default connect(mapStateToProps, mapDipatchToProps)(Checkout)
