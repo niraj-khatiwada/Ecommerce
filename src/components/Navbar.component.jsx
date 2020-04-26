@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import CartDropdown from './Secondary/CartDropDown.component'
 
 import { selectCartItemQuantity } from '../reducers/CartItems/cart.selectors'
+import { selectCurrentUser } from '../reducers/user/user.selectors'
 
 class Navbar extends React.Component {
   state = {
@@ -101,7 +102,7 @@ class Navbar extends React.Component {
 const mapStateToProps = (state) => ({
   totalQuantity: selectCartItemQuantity(state),
   history: state.hitory,
-  user: state.user,
+  user: selectCurrentUser(state),
   toggle: state.toggle,
 })
 

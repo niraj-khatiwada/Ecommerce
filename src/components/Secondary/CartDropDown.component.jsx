@@ -72,7 +72,6 @@ const CartDropdown = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     cartArray: selectCartArray(state),
     history: state.history,
