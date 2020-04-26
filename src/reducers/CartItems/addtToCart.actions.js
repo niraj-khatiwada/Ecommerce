@@ -5,8 +5,6 @@ const addToCart = (id, item, count = 0, plusminus) => ({
     item,
     plusminus,
   },
-  type: 'TOGGLE_DROPDOWN',
-  payload: false,
 })
 
 export const toggleDropdown = () => ({
@@ -14,3 +12,8 @@ export const toggleDropdown = () => ({
 })
 
 export default addToCart
+
+export const removeFromCart = (item) => ({
+  type: 'REMOVE_FROM_CART',
+  payload: item,
+})

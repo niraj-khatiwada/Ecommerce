@@ -1,4 +1,4 @@
-import { noDuplicate } from './cart.utils'
+import { noDuplicate, filteredArray } from './cart.utils'
 
 const INITIAL_CART_ITEMS = []
 
@@ -6,6 +6,8 @@ const CartItemsReducer = (state = INITIAL_CART_ITEMS, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
       return noDuplicate(state, action.payload)
+    case 'REMOVE_FROM_CART':
+      return filteredArray(state, action.payload)
     default:
       return state
   }
@@ -19,4 +21,5 @@ export const ToggleDropdownReducer = (state = false, action) => {
       return state
   }
 }
+
 export default CartItemsReducer
