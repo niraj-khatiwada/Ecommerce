@@ -9,5 +9,6 @@ export const noDuplicate = (existingArray, itemAdded) => {
   return [...existingArray, { ...itemAdded, quantity: 1 }]
 }
 
-export const filteredArray = (existingArray, itemtobeRemoved) =>
-  existingArray.filter((item) => item.id !== itemtobeRemoved.id)
+export const filteredArray = (existingArray, itemtobeRemoved) => {
+  return existingArray.filter((item) => item.id !== itemtobeRemoved.id)
+}

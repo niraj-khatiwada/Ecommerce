@@ -3,12 +3,13 @@ import React, { Component } from 'react'
 import { createStructuredSelector } from 'reselect'
 import { selectCartArray } from '../reducers/CartItems/cart.selectors'
 import { connect } from 'react-redux'
+import { removeFromCart } from '../reducers/CartItems/addtToCart.actions'
 
 import { ProductImage, TableData } from '../styles/Checkout.styles'
 
 class Checkout extends Component {
   render() {
-    const { sortedArray } = this.props
+    const { sortedArray, remove } = this.props
     const middleAlign = { verticalAlign: 'middle' }
     const total = sortedArray.reduce(
       (accumulator, currvalue) =>
@@ -60,7 +61,12 @@ class Checkout extends Component {
                   <h5>$ {item.quantity * item.item.price}</h5>
                 </TableData>
                 <TableData style={middleAlign}>
-                  <button className="btn btn-dark w-100">Remove</button>{' '}
+                  <button
+                    className="btn btn-dark w-100"
+                    onClick={() => remove(item)}
+                  >
+                    Remove
+                  </button>{' '}
                 </TableData>
               </tr>
             ))}
@@ -76,4 +82,8 @@ const mapStateToProps = createStructuredSelector({
   sortedArray: selectCartArray,
 })
 
-export default connect(mapStateToProps, null)(Checkout)
+const mapDipatchToProps = (dispatch) => ({
+  remove: (item) => dispatch(removeFromCart(item)),
+})
+
+export default connect(mapStateToProps, mapDipatchToProps)(Checkout)
