@@ -8,6 +8,7 @@ import {withRouter } from "react-router-dom"
 
 const CartDropdown = (props) => {
     const handleToggle= () => props.dispatch({type:"TOGGLE_DROPDOWN"})
+    const sortedCartArray = props.cart.sort((a,b) => (b.quantity - a.quantity))
   return (
       <Dropdown isOpen={props.toggle} toggle={handleToggle}>
         <DropdownToggle className="bg-white border-0 btn-outline-light">
@@ -16,7 +17,7 @@ const CartDropdown = (props) => {
         <DropdownDiv>
         <DropdownMenu right className="bg-light border-black"  style={{overflowY:"scroll", maxHeight:"30rem"}} right>
             <DropdownItem header className="text-center">{(props.cart.length!== 0) ? "Your Items" : "No Items" }</DropdownItem>
-            {props.cart.map(item => (
+            {sortedCartArray.map(item => (
                 <div key={item.id}>
             <DropdownItem>
                 <div className="d-flex">

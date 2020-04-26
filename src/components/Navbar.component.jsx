@@ -19,13 +19,14 @@ class Navbar extends React.Component {
     this.setState((preState) => this.setState({ signoutconfirm: !preState }))
   closePopover = () => this.setState({ signoutconfirm: false })
   render() {
-    const { history, user, cart, toggle, dispatch } = this.props
-    const { loggedInUser } = user
+    const {
+      history,
+      user: { loggedInUser },
+      toggle,
+      totalQuantity,
+    } = this.props
+
     const style = { cursor: 'pointer' }
-    const totalQuantity = cart.reduce(
-      (preVal, currVal) => preVal + currVal.quantity,
-      0
-    )
     const popover = (
       <Popover
         id="signoutconfirm"
@@ -95,6 +96,13 @@ class Navbar extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => state
+const mapStateToProps = ({ cart, history, user, toggle }) => ({
+  totalQuantity: cart.reduce((preVal, currVal) => {
+    return preVal + currVal.quantity
+  }, 0),
+  history,
+  user,
+  toggle,
+})
 
 export default connect(mapStateToProps)(withRouter(Navbar))
