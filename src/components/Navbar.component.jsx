@@ -11,6 +11,8 @@ import { connect } from 'react-redux'
 
 import CartDropdown from './Secondary/CartDropDown.component'
 
+import { selectCartItemQuantity } from '../reducers/CartItems/cart.selectors'
+
 class Navbar extends React.Component {
   state = {
     signoutconfirm: false,
@@ -96,13 +98,11 @@ class Navbar extends React.Component {
   }
 }
 
-const mapStateToProps = ({ cart, history, user, toggle }) => ({
-  totalQuantity: cart.reduce((preVal, currVal) => {
-    return preVal + currVal.quantity
-  }, 0),
-  history,
-  user,
-  toggle,
+const mapStateToProps = (state) => ({
+  totalQuantity: selectCartItemQuantity(state),
+  history: state.hitory,
+  user: state.user,
+  toggle: state.toggle,
 })
 
 export default connect(mapStateToProps)(withRouter(Navbar))
