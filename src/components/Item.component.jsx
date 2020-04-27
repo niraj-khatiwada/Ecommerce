@@ -10,7 +10,7 @@ class Item extends Component {
   render() {
     const { item, dispatch } = this.props
     return (
-      <div className="col-md-3 m-0 p-0">
+      <div className="col-md-3 col-sm-6 m-0 p-0">
         <ItemDiv
           className=" d-flex text-center align-items-end"
           style={{ background: `url(${item.imageUrl})center/cover no-repeat` }}

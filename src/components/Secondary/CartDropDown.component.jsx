@@ -28,8 +28,7 @@ const CartDropdown = (props) => {
         <DropdownMenu
           right
           className="bg-light border-black"
-          style={{ overflowY: 'scroll', maxHeight: '30rem' }}
-          right
+          style={{ overflowY: 'scroll', maxHeight: '30rem', width: '18rem' }}
         >
           <DropdownItem header className="text-center">
             {sortedCartArray.length !== 0 ? 'Your Items' : 'No Items'}
