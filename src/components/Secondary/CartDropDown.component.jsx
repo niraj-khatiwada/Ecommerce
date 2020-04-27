@@ -28,7 +28,12 @@ const CartDropdown = (props) => {
         <DropdownMenu
           right
           className="bg-light border-black"
-          style={{ overflowY: 'scroll', maxHeight: '30rem', width: '18rem' }}
+          style={{
+            overflowY: 'scroll',
+            maxHeight: '30rem',
+            width: '18rem',
+          }}
+          right
         >
           <DropdownItem header className="text-center">
             {sortedCartArray.length !== 0 ? 'Your Items' : 'No Items'}
@@ -37,11 +42,7 @@ const CartDropdown = (props) => {
             <div key={item.id}>
               <DropdownItem>
                 <div className="d-flex">
-                  <img
-                    src={item.item.imageUrl}
-                    alt="product"
-                    style={{ width: '4rem' }}
-                  />
+                  <img src={item.item.imageUrl} style={{ width: '4rem' }} />
                   <div
                     className="d-flex flex-column ml-3 pr-1"
                     style={{ overflow: 'hidden' }}

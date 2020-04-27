@@ -41,10 +41,11 @@ class Navbar extends React.Component {
       />
     )
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top ">
+      <nav className="navbar navbar-expand-sm navbar-light bg-white sticky-top ">
         <NavLink className="navbar-brand" to="/">
           Shop'em
         </NavLink>
+        <div className="d-sm-none"></div>
         <button
           className="navbar-toggler"
           type="button"
@@ -66,6 +67,7 @@ class Navbar extends React.Component {
                 </Link>
               }
             />
+
             <Link
               onClick={() => {
                 return history.push('/shop')
