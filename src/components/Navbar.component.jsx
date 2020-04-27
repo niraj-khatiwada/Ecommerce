@@ -13,6 +13,7 @@ import CartDropdown from './Secondary/CartDropDown.component'
 
 import { selectCartItemQuantity } from '../reducers/CartItems/cart.selectors'
 import { selectCurrentUser } from '../reducers/user/user.selectors'
+import logo from '../Images/logo.png'
 
 class Navbar extends React.Component {
   state = {
@@ -41,9 +42,9 @@ class Navbar extends React.Component {
       />
     )
     return (
-      <nav className="navbar navbar-expand-sm navbar-light bg-white sticky-top ">
+      <nav className="navbar navbar-expand-sm navbar-light bg-white sticky-top p-0">
         <NavLink className="navbar-brand" to="/">
-          Shop'em
+          <img src={logo} alt="logo" style={{ width: '6rem' }} />
         </NavLink>
         <div className="d-sm-none"></div>
         <button

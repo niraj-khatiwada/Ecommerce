@@ -31,11 +31,24 @@ const CartDropdown = (props) => {
           style={{
             overflowY: 'scroll',
             maxHeight: '30rem',
-            width: '18rem',
+            width: '17rem',
           }}
           right
         >
           <DropdownItem header className="text-center">
+            {sortedCartArray.length !== 0 ? (
+              <div className="d-flex">
+                <button
+                  className="btn btn-outline-dark btn-sm col m-3"
+                  onClick={() => {
+                    handleToggle()
+                    props.history.push('/checkout')
+                  }}
+                >
+                  Checkout <i className="fas fa-shopping-cart"></i>
+                </button>
+              </div>
+            ) : null}
             {sortedCartArray.length !== 0 ? 'Your Items' : 'No Items'}
           </DropdownItem>
           {sortedCartArray.map((item) => (
@@ -56,19 +69,6 @@ const CartDropdown = (props) => {
               <DropdownItem divider />
             </div>
           ))}
-          {sortedCartArray.length !== 0 ? (
-            <div className="d-flex">
-              <button
-                className="btn btn-outline-dark btn-sm col m-3"
-                onClick={() => {
-                  handleToggle()
-                  props.history.push('/checkout')
-                }}
-              >
-                Checkout <i className="fas fa-shopping-cart"></i>
-              </button>
-            </div>
-          ) : null}
         </DropdownMenu>
       </DropdownDiv>
     </Dropdown>
