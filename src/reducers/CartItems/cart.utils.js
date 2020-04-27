@@ -24,20 +24,16 @@ export const addQuantity = (existingArray, itemQuantityIncrease) => {
   return [...existingArray]
 }
 export const subtractQuantity = (existingArray, itemQuantityIncrease) => {
-  if (existingArray.find((item) => item.id === itemQuantityIncrease.id)) {
+  if (
+    existingArray.find((item) => item.id === itemQuantityIncrease.id).quantity >
+    0
+  ) {
     return existingArray.map((item) => {
-      if (item.quantity >= 1) {
-        return item.id === itemQuantityIncrease.id
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      } else {
-        {
-          return item.id === itemQuantityIncrease.id
-            ? { ...item, quantity: 0 }
-            : item
-        }
-      }
+      return item.id === itemQuantityIncrease.id
+        ? { ...item, quantity: item.quantity - 1 }
+        : { ...item }
     })
+  } else {
+    return existingArray.filter((item) => item.id !== itemQuantityIncrease.id)
   }
-  return [...existingArray]
 }
