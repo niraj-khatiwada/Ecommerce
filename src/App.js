@@ -6,6 +6,7 @@ import Shop from './components/Shop.component'
 import SignIn from './components/Authentication/SignIn.component'
 import SignUp from './components/Authentication/SignUp.component'
 import Checkout from './components/Checkout.component'
+import Product from './components/Product.component'
 
 import ShopItemDatas from './Datas/ShopItem.datas'
 import { Route, Switch, Redirect } from 'react-router-dom'
@@ -16,9 +17,6 @@ import { connect } from 'react-redux'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   unsubscribeFromAuth = null
   componentDidMount() {
     const { dispatch } = this.props
@@ -70,6 +68,7 @@ class App extends React.Component {
             path="/shop"
             render={() => <Shop itemsArray={ShopItemDatas} />}
           />
+          <Route exact path="/shop/:product" render={() => <Product />} />
           <Route exact path="/checkout" component={Checkout} />
           <Route
             render={() => (

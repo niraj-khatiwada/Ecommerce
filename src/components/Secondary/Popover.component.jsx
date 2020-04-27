@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
-import { Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import React from 'react'
+import { Popover, PopoverHeader, PopoverBody } from 'reactstrap'
 
-const PopoverComp = ({id,signoutconfirm , toggle,signout}) => {
+const PopoverComp = ({ id, signoutconfirm, toggle, signout }) => {
   return (
-    <div >
-      <Popover placement="bottom" isOpen={signoutconfirm} target={id} toggle={toggle}>
+    <div>
+      <Popover
+        placement="bottom"
+        isOpen={signoutconfirm}
+        target={id}
+        toggle={toggle}
+      >
         <PopoverHeader>Sign Out?</PopoverHeader>
-        <PopoverBody><button className="btn btn-dark btn-sm" onClick={signout}>Sign Out</button></PopoverBody>
+        <PopoverBody>
+          <button className="btn btn-dark btn-sm" onClick={signout}>
+            Sign Out
+          </button>
+        </PopoverBody>
       </Popover>
     </div>
-  );
+  )
 }
 
-export default PopoverComp;
+export default PopoverComp

@@ -41,7 +41,7 @@ class Checkout extends Component {
           </thead>
           <tbody>
             {sortedArray.map((item, index) => (
-              <tr>
+              <tr key={item.id}>
                 <th scope="row" style={middleAlign}>
                   {index}
                 </th>

@@ -25,7 +25,6 @@ class Navbar extends React.Component {
     const {
       history,
       user: { loggedInUser },
-      toggle,
       totalQuantity,
     } = this.props
 

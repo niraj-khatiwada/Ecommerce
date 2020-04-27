@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 
 class Item extends Component {
   render() {
-    const { item, cart, dispatch } = this.props
+    const { item, dispatch } = this.props
     return (
       <div className="col-md-3 m-0 p-0">
         <ItemDiv
@@ -23,7 +23,7 @@ class Item extends Component {
               })
             }
           >
-            <h5>Add to cart</h5>
+            <h5 className="m-0">Add to cart</h5>
           </AddToCart>
         </ItemDiv>
         <div className="mx-3 d-flex justify-content-between">
