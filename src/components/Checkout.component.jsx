@@ -83,7 +83,7 @@ class Checkout extends Component {
             ))}
           </tbody>
         </table>
-        <h4 className="text-right p-3">Total= {total}</h4>
+        <h4 className="text-right p-3">Total= ${total}</h4>
       </div>
     )
   }
