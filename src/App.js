@@ -68,7 +68,13 @@ class App extends React.Component {
             path="/shop"
             render={() => <Shop itemsArray={ShopItemDatas} />}
           />
-          <Route exact path="/shop/:product" render={() => <Product />} />
+          <Route
+            exact
+            path="/shop/:product"
+            render={(routeProps) => (
+              <Product product={routeProps.match.params.product} />
+            )}
+          />
           <Route exact path="/checkout" component={Checkout} />
           <Route
             render={() => (

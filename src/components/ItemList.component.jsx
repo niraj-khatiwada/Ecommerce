@@ -16,14 +16,15 @@ class ItemList extends React.Component {
       return (
         <Box
           className={`d-flex flex-column ${height[1]} ${height[0]}  p-0`}
-          style={{ height: height[0] }} key={item.id}
+          style={{ height: height[0] }}
+          key={item.id}
         >
           <ImageWrapper
             style={{
               background: `url(${item.imageUrl}) center/cover no-repeat`,
             }}
           >
-            <BoxText onClick={() => history.push(`${item.title}`)}>
+            <BoxText onClick={() => history.push(`/shop/${item.title}`)}>
               <h3>{item.title.toUpperCase()}</h3>
               <h5>Shop Now</h5>
             </BoxText>
