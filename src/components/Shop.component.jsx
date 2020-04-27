@@ -15,7 +15,7 @@ class Shop extends Component {
           <div className="d-flex mt-4 justify-content-between px-3">
             <h3 className="">{collectionItem.title}</h3>
             <Link
-              to={`/shop/${collectionItem.title.toLowerCase()}`}
+              to={`/shop/${collectionItem.routeName}`}
               className="text-dark"
             >
               See all {collectionItem.title}...
