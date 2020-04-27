@@ -23,8 +23,8 @@ class Checkout extends Component {
     return (
       <div className="container">
         <h3> Checkout</h3>
-        <table class="table table-hover">
-          <thead class="thead-dark">
+        <table className="table table-hover">
+          <thead className="thead-dark">
             <tr>
               <th scope="colz">S.N</th>
               <th scope="colz">Product</th>
