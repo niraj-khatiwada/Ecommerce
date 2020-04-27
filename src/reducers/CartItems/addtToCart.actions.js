@@ -3,7 +3,6 @@ const addToCart = (id, item, count = 0, plusminus) => ({
   payload: {
     id,
     item,
-    plusminus,
   },
 })
 
